@@ -1,0 +1,42 @@
+# db/changelog/dev/910-recompute-discounts-once.yaml
+databaseChangeLog:
+  - changeSet:
+      id: 202509141614-discount-fun
+      author: Albert Kamalov
+      context: dev
+      changes:
+        - sql:
+            dbms: postgresql
+            sql: |
+              WITH pct AS (
+                SELECT p.id,
+                       GREATEST(
+                         COALESCE((
+                           SELECT MAX(percent)::numeric
+                           FROM discount_rules
+                           WHERE scope='CATEGORY'
+                             AND category_id = p.category_id
+                         ), 0),
+                         COALESCE((
+                           SELECT MAX(percent)::numeric
+                           FROM discount_rules
+                           WHERE scope='SKU_SUFFIX'
+                             AND p.sku LIKE '%' || sku_suffix
+                         ), 0)
+                       ) AS percent
+                FROM products p
+              )
+              UPDATE products p
+              SET discount       = pct.percent::bigint,
+                  discount_price = ROUND(p.price * (1 - pct.percent/100.0), 2),
+                  updated_at     = NOW()
+              FROM pct
+              WHERE p.id = pct.id;
+      rollback:
+        - sql:
+            dbms: postgresql
+            sql: |
+              UPDATE products
+              SET discount = 0,
+                  discount_price = price,
+                  updated_at = NOW();

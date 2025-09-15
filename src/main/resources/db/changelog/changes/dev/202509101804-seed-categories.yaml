@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202509101804-seed-categories
+      author: Albert Kamalov
+      context: dev
+      changes:
+        - loadData:
+            file: db/changelog/seeds/dev/categories.csv
+            tableName: categories
+            separator: ","
+            encoding: UTF-8
+            quotchar: '"'
+            columns:
+              - column:
+                  header: name
+                  name: name
+                  type: STRING
+      rollback:
+        - delete:
+            tableName: categories
+            where: "id BETWEEN 2 AND 11"

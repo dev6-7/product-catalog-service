@@ -1,0 +1,280 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202509101804-seed-products
+      author: Albert Kamalov
+      context: dev
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0001" }
+              - column: { name: price, valueNumeric: 19.99 }
+              - column: { name: description, value: "Wireless Mouse with ergonomic design" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0002" }
+              - column: { name: price, valueNumeric: 499.00 }
+              - column: { name: description, value: "4K Ultra HD Smart TV, 55 inches" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0003" }
+              - column: { name: price, valueNumeric: 29.50 }
+              - column: { name: description, value: "Stainless Steel Water Bottle, 1L" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home & Kitchen')" }
+              - column: { name: category_name, value: "Home & Kitchen" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0004" }
+              - column: { name: price, valueNumeric: 15.00 }
+              - column: { name: description, value: "Cotton T-Shirt, Unisex, Size M" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Clothing')" }
+              - column: { name: category_name, value: "Clothing" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0005" }
+              - column: { name: price, valueNumeric: 120.00 }
+              - column: { name: description, value: "Noise-Cancelling Over-Ear Headphones" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0006" }
+              - column: { name: price, valueNumeric: 9.99 }
+              - column: { name: description, value: "USB-C to USB Adapter" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0007" }
+              - column: { name: price, valueNumeric: 75.00 }
+              - column: { name: description, value: "Leather Wallet with RFID Protection" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Accessories')" }
+              - column: { name: category_name, value: "Accessories" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0008" }
+              - column: { name: price, valueNumeric: 35.00 }
+              - column: { name: description, value: "Yoga Mat with Non-Slip Surface" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Sports')" }
+              - column: { name: category_name, value: "Sports" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0009" }
+              - column: { name: price, valueNumeric: 220.00 }
+              - column: { name: description, value: "Smartwatch with Heart Rate Monitor" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0010" }
+              - column: { name: price, valueNumeric: 12.50 }
+              - column: { name: description, value: "Ceramic Coffee Mug, 350ml" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home & Kitchen')" }
+              - column: { name: category_name, value: "Home & Kitchen" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0011" }
+              - column: { name: price, valueNumeric: 60.00 }
+              - column: { name: description, value: "Bluetooth Portable Speaker" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0012" }
+              - column: { name: price, valueNumeric: 85.00 }
+              - column: { name: description, value: "Backpack with Laptop Compartment" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Accessories')" }
+              - column: { name: category_name, value: "Accessories" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0013" }
+              - column: { name: price, valueNumeric: 18.00 }
+              - column: { name: description, value: "Stainless Steel Cutlery Set, 24 Pieces" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home & Kitchen')" }
+              - column: { name: category_name, value: "Home & Kitchen" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0014" }
+              - column: { name: price, valueNumeric: 250.00 }
+              - column: { name: description, value: "Electric Guitar Starter Pack" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Musical Instr.')" }
+              - column: { name: category_name, value: "Musical Instr." }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0015" }
+              - column: { name: price, valueNumeric: 42.00 }
+              - column: { name: description, value: "Running Shoes, Men's Size 42" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Footwear')" }
+              - column: { name: category_name, value: "Footwear" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0016" }
+              - column: { name: price, valueNumeric: 27.99 }
+              - column: { name: description, value: "Digital Bathroom Scale with Body Fat Analyzer" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home Appliances')" }
+              - column: { name: category_name, value: "Home Appliances" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0017" }
+              - column: { name: price, valueNumeric: 14.99 }
+              - column: { name: description, value: "Set of 6 Organic Cotton Socks" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Clothing')" }
+              - column: { name: category_name, value: "Clothing" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0018" }
+              - column: { name: price, valueNumeric: 300.00 }
+              - column: { name: description, value: "DSLR Camera with 18-55mm Lens" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0019" }
+              - column: { name: price, valueNumeric: 8.99 }
+              - column: { name: description, value: "Hardcover Notebook, A5, 200 Pages" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Stationery')" }
+              - column: { name: category_name, value: "Stationery" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0020" }
+              - column: { name: price, valueNumeric: 65.00 }
+              - column: { name: description, value: "Microwave Oven, 20L Capacity" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home Appliances')" }
+              - column: { name: category_name, value: "Home Appliances" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0021" }
+              - column: { name: price, valueNumeric: 23.50 }
+              - column: { name: description, value: "LED Desk Lamp with Adjustable Brightness" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home & Kitchen')" }
+              - column: { name: category_name, value: "Home & Kitchen" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0022" }
+              - column: { name: price, valueNumeric: 19.00 }
+              - column: { name: description, value: "Wireless Charger Pad for Smartphones" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0023" }
+              - column: { name: price, valueNumeric: 55.00 }
+              - column: { name: description, value: "Men's Quartz Analog Watch with Leather Strap" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Accessories')" }
+              - column: { name: category_name, value: "Accessories" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0024" }
+              - column: { name: price, valueNumeric: 30.00 }
+              - column: { name: description, value: "Wooden Chess Set with Folding Board" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Toys & Games')" }
+              - column: { name: category_name, value: "Toys & Games" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0025" }
+              - column: { name: price, valueNumeric: 99.00 }
+              - column: { name: description, value: "Home Security Camera with Night Vision" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0026" }
+              - column: { name: price, valueNumeric: 16.50 }
+              - column: { name: description, value: "Aromatherapy Essential Oil Diffuser" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home & Kitchen')" }
+              - column: { name: category_name, value: "Home & Kitchen" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0027" }
+              - column: { name: price, valueNumeric: 40.00 }
+              - column: { name: description, value: "Professional Blender with 2L Jar" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home Appliances')" }
+              - column: { name: category_name, value: "Home Appliances" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0028" }
+              - column: { name: price, valueNumeric: 22.00 }
+              - column: { name: description, value: "Kids' Educational Tablet Toy" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Toys & Games')" }
+              - column: { name: category_name, value: "Toys & Games" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0029" }
+              - column: { name: price, valueNumeric: 110.00 }
+              - column: { name: description, value: "Mechanical Gaming Keyboard with RGB Lighting" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: category_name, value: "Electronics" }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: sku, value: "SKU0030" }
+              - column: { name: price, valueNumeric: 7.50 }
+              - column: { name: description, value: "Pack of 10 Ballpoint Pens, Blue Ink" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Stationery')" }
+              - column: { name: category_name, value: "Stationery" }
+
+      rollback:
+        - delete:
+            tableName: products
+            where: "sku BETWEEN 'SKU0001' AND 'SKU0030'"

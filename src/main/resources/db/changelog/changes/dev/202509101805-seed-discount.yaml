@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 202509101805-seed-discount
+      author: Albert Kamalov
+      context: dev
+      changes:
+        # CATEGORY: Electronics → 15%
+        - insert:
+            tableName: discount_rules
+            columns:
+              - column: { name: scope, value: "CATEGORY" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Electronics')" }
+              - column: { name: percent, valueNumeric: 15 }
+
+        # CATEGORY: Home & Kitchen → 25%
+        - insert:
+            tableName: discount_rules
+            columns:
+              - column: { name: scope, value: "CATEGORY" }
+              - column: { name: category_id, valueComputed: "(SELECT id FROM categories WHERE name='Home & Kitchen')" }
+              - column: { name: percent, valueNumeric: 25 }
+
+        # SKU_SUFFIX: ends with '5' → 30%
+        - insert:
+            tableName: discount_rules
+            columns:
+              - column: { name: scope, value: "SKU_SUFFIX" }
+              - column: { name: sku_suffix, value: "5" }
+              - column: { name: percent, valueNumeric: 30 }
+
+      rollback:
+        - delete:
+            tableName: discount_rules
+            where: "scope = 'CATEGORY' AND category_id IN ((SELECT id FROM categories WHERE name IN ('Electronics','Home & Kitchen')))"
+        - delete:
+            tableName: discount_rules
+            where: "scope = 'SKU_SUFFIX' AND sku_suffix = '5'"

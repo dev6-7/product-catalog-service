@@ -1,0 +1,3 @@
+databaseChangeLog:
+  - includeAll: { path: db/changelog/changes }
+  - includeAll: { path: db/changelog/seeds/dev, context: dev }

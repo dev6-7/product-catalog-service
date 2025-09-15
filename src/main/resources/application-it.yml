@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    contexts: it
+    change-log: classpath:db/changelog/db.changelog-master-it.yaml
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  test:
+    database:
+      replace: none
+server:
+  port: 0

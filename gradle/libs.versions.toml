@@ -1,0 +1,19 @@
+[versions]
+kotlin = "2.0.20"
+spring-boot = "3.3.3"
+dep-mgmt = "1.1.7"
+springdoc = "2.6.0"
+mockk = "1.13.12"
+ninja = "4.0.2"
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+dep-mgmt = { id = "io.spring.dependency-management", version.ref = "dep-mgmt" }
+
+[libraries]
+springdoc-webmvc-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+ninja = { module = "com.ninja-squad:springmockk", version.ref = "ninja" }
