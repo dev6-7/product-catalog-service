@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    contexts: it
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  test:
+    database:
+      replace: none
+server:
+  port: 0

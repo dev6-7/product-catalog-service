@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: catalog-postgres
+    environment:
+      POSTGRES_DB: catalog
+      POSTGRES_USER: catalog
+      POSTGRES_PASSWORD: catalog
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalog -d catalog"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    # Dockerfile in project root
+    build:
+      context: .
+    image: product-catalog-service:local
+    container_name: pcatalog-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # profile and Spring options
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+      SPRING_LIQUIBASE_CONTEXTS: ${SPRING_LIQUIBASE_CONTEXTS:-dev}
+
+      # datasource
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-catalog}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-catalog}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-catalog}
+
+      # (optional) Hibernate/logging
+      # SPRING_JPA_SHOW_SQL: "true"
+      # SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+
+      # JVM/приложение
+      JAVA_OPTS: ${JAVA_OPTS:-}
+      SPRING_OPTS: ${SPRING_OPTS:-}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  pgdata: {}
